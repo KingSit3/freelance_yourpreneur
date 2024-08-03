@@ -37,31 +37,83 @@
         dekat dengan elemen maka elemen tersebut bernilai lebih besar. Contoh :
       </p>
 
-      <FormInput disabled :rows="example1" />
+      <FormInput disabled :keys="exampleKeys" :rows="example1" />
       <p>Nilai di atas menunjukkan bahwa A lebih penting dari B</p>
 
-      <FormInput disabled :rows="example2" />
+      <FormInput disabled :keys="exampleKeys" :rows="example2" />
       <p>Nilai di atas menunjukkan bahwa B sangat lebih penting dari A</p>
     </section>
     <!-- End Example -->
 
     <!-- Criteria -->
     <section>
-      <h3 class="font-semibold text-xl">Kriteria</h3>
+      <h3 class="font-semibold text-xl border-b-2 border-green-800 w-fit pr-10">Kriteria</h3>
       <p>
         Pada bagian ini kamu bisa memilih menggunakan penilaian yang sudah tersedia dengan data yang
         sudah melalui riset dari 40 orang pengusaha kelas mikro hingga makro, atau kamu bisa
         melakukan men-setting penilaian kamu sendiri dengan mempertimbang kan latar belakang kamu
         sendiri.
       </p>
-      <FormInput :rows="criteria" />
+      <FormInput
+        v-model.emitFormValue="generalStore.$state.criteriaValue"
+        :keys="criteriaKeys"
+        :rows="criteria"
+      />
+
+      <!-- Debug Criteria -->
+      <div class="">
+        <div v-for="(value, index) in generalStore.$state.criteriaValue" :key="index">
+          {{ criteriaKeys[index] }} - {{ value.toPrecision(2) }} ({{ value }})
+        </div>
+      </div>
+      <!-- End Debug Criteria -->
     </section>
     <!-- End Criteria -->
+
+    <!-- Input -->
+    <section class="space-y-2">
+      <h3 class="font-semibold text-xl border-b-2 border-green-800 w-fit pr-10">
+        Alternatif usaha yang akan dibuat / dipertimbangkan
+      </h3>
+      <div class="space-y-3">
+        <div class="flex gap-3">
+          <label for="a">Input usaha A</label>
+          <input
+            type="text"
+            name="a"
+            id="a"
+            class="px-1 focus:outline-none outline-none border-2 border-neutral-700 rounded bg-neutral-300 text-neutral-800"
+            required
+          />
+        </div>
+        <div class="flex gap-3">
+          <label for="b">Input usaha B</label>
+          <input
+            type="text"
+            name="b"
+            id="b"
+            class="px-1 focus:outline-none outline-none border-2 border-neutral-700 rounded bg-neutral-300 text-neutral-800"
+            required
+          />
+        </div>
+        <div class="flex gap-3">
+          <label for="c">Input usaha C</label>
+          <input
+            type="text"
+            name="c"
+            id="c"
+            class="px-1 focus:outline-none outline-none border-2 border-neutral-700 rounded bg-neutral-300 text-neutral-800"
+            required
+          />
+        </div>
+      </div>
+    </section>
+    <!-- End Input -->
 
     <!-- Buttons -->
     <section class="flex justify-center">
       <button
-        @click="generalStore.$state.mainMenu = 'form'"
+        @click="moveToFillingForm"
         class="px-3 p-0.5 border-2 border-green-800 hover:bg-green-800 text-neutral-100 rounded duration-200"
       >
         Mulai isi form
@@ -73,12 +125,18 @@
 <script lang="ts" setup>
 import { useGeneralStore } from '@/stores/general'
 import FormInput from './FormInput.vue'
-import { useFormCount } from '@/composables/formCount'
+import type { FormRowInterface } from '@/interface/general'
 
 const generalStore = useGeneralStore()
-useFormCount()
 
-const example1 = [
+const moveToFillingForm = () => {
+  if (condition) {
+  }
+  generalStore.$state.mainMenu = 'form'
+}
+
+const exampleKeys = ['a', 'b']
+const example1: FormRowInterface[] = [
   {
     key: 'example1',
     value: 0.2,
@@ -86,8 +144,7 @@ const example1 = [
     last_label: 'B'
   }
 ]
-
-const example2 = [
+const example2: FormRowInterface[] = [
   {
     key: 'example2',
     value: 7,
@@ -96,7 +153,15 @@ const example2 = [
   }
 ]
 
-const criteria = [
+const criteriaKeys = [
+  'pendidikan',
+  'pengalaman',
+  'keuangan',
+  'relasi',
+  'dukungan_keluarga',
+  'kebiasaan'
+]
+const criteria: FormRowInterface[] = [
   {
     key: 'pendidikan-pengalaman',
     value: 3,
@@ -171,13 +236,13 @@ const criteria = [
   },
   {
     key: 'relasi-dukungan_keluarga',
-    value: 3,
+    value: 0.14,
     first_label: 'Relasi',
     last_label: 'Dukungan Keluarga'
   },
   {
     key: 'relasi-kebiasaan',
-    value: 3,
+    value: 1,
     first_label: 'Relasi',
     last_label: 'Kebiasaan'
   },

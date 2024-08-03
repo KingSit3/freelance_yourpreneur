@@ -2,12 +2,16 @@ import { defineStore } from 'pinia'
 
 interface GeneralStoreInterface {
   mainMenu: 'menu' | 'form' | 'result'
+  formMenu: string
+  criteriaValue: number[]
 }
 
 export const useGeneralStore = defineStore('general', {
   state: (): GeneralStoreInterface => {
     return {
-      mainMenu: 'menu'
+      mainMenu: 'menu',
+      formMenu: '',
+      criteriaValue: []
     }
   }
 })
