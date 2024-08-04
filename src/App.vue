@@ -34,44 +34,9 @@
   </main>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
 import MenuComponent from './components/MenuComponent.vue'
 import { useGeneralStore } from './stores/general'
-import FormComponent from './components/FormComponent.vue';
+import FormComponent from './components/FormComponent.vue'
 
 const generalStore = useGeneralStore()
-
-interface FormMenuInterface {
-  label: string
-  key: 'pendidikan' | 'pengalaman' | 'keuangan' | 'relasi' | 'dukungan-keluarga' | 'kebiasaan'
-}
-
-const formMenuList: FormMenuInterface[] = [
-  {
-    key: 'pendidikan',
-    label: 'Pendidikan'
-  },
-  {
-    key: 'pengalaman',
-    label: 'Pengalaman'
-  },
-  {
-    key: 'keuangan',
-    label: 'Keuangan'
-  },
-  {
-    key: 'relasi',
-    label: 'Relasi'
-  },
-  {
-    key: 'dukungan-keluarga',
-    label: 'Dukungan Keluarga'
-  },
-  {
-    key: 'kebiasaan',
-    label: 'Kebiasaan'
-  }
-]
-
-const formMenu = ref<FormMenuInterface>(formMenuList[0])
 </script>

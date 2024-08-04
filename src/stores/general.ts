@@ -4,6 +4,8 @@ interface GeneralStoreInterface {
   mainMenu: 'menu' | 'form' | 'result'
   formMenu: string
   criteriaValue: number[]
+  formSurveyValue: number[][]
+  stores: string[]
 }
 
 export const useGeneralStore = defineStore('general', {
@@ -11,7 +13,10 @@ export const useGeneralStore = defineStore('general', {
     return {
       mainMenu: 'menu',
       formMenu: '',
-      criteriaValue: []
+      criteriaValue: [],
+      formSurveyValue: [],
+      stores: []
     }
-  }
+  },
+  persist: true
 })

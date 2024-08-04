@@ -13,7 +13,7 @@
         <td class="font-semibold text-right">{{ row.first_label }}</td>
         <td v-for="(col, index) in formOptionValue" :key="index">
           <label
-            :for="rowIndex.toString() + index.toString()"
+            :for="formKey + rowIndex.toString() + index.toString()"
             :class="`${col == formValue[rowIndex] ? 'bg-green-800' : 'bg-neutral-300'} ${disabled ? 'cursor-default' : 'cursor-pointer'} size-7 flex justify-center border border-neutral-700 duration-200`"
           >
             <span v-show="col == formValue[rowIndex]" class="font-bold">X</span>
@@ -23,7 +23,7 @@
             v-model="formValue[rowIndex]"
             type="radio"
             name="lorem"
-            :id="rowIndex.toString() + index.toString()"
+            :id="formKey + rowIndex.toString() + index.toString()"
             :value="col"
             :disabled="disabled"
             hidden
@@ -115,6 +115,7 @@ watch(formValue.value, (current) => {
 const props = defineProps<{
   rows: FormRowInterface[]
   keys: string[]
+  formKey: string
   disabled?: boolean
 }>()
 
