@@ -140,7 +140,9 @@ import { computed } from 'vue'
 const generalStore = useGeneralStore()
 
 const storeInputError = computed(() =>
-  generalStore.$state.stores.length < 3 ? 'Harap Isi semua nama usaha' : null
+  generalStore.$state.stores.includes('') || generalStore.$state.stores.length < 3
+    ? 'Harap Isi semua nama usaha'
+    : null
 )
 
 const exampleKeys = ['a', 'b']
