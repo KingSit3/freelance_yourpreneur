@@ -108,8 +108,6 @@ watch(formValue.value, (current) => {
     }
   }
   emitFormValue.value = result
-  // generalStore.$state.criteriaValue = result
-  console.log(result)
 })
 
 const props = defineProps<{
