@@ -14,21 +14,6 @@
       <template v-else-if="generalStore.$state.mainMenu == 'form'">
         <FormComponent />
       </template>
-      <template v-else>
-        Result
-
-        <div class="">
-          <button>Hitung hasil</button>
-        </div>
-
-        <!-- Debug Menu -->
-        <div class="flex justify-center font-bold text-blue-200 gap-10">
-          <button @click="generalStore.$state.mainMenu = 'menu'">Main Menu</button>
-          <button @click="generalStore.$state.mainMenu = 'form'">Form</button>
-          <button @click="generalStore.$state.mainMenu = 'result'">result</button>
-        </div>
-        <!-- End Debug Menu -->
-      </template>
     </div>
     <!-- Container -->
   </main>

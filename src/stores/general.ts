@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 interface GeneralStoreInterface {
-  mainMenu: 'menu' | 'form' | 'result'
+  mainMenu: 'menu' | 'form'
   formMenu: string
   criteriaValue: number[]
   stores: string[]

@@ -115,8 +115,6 @@
         </div>
         <p class="text-red-500">{{ storeInputError }}</p>
       </div>
-      {{ generalStore.$state.stores }}
-      Lorem.
     </section>
     <!-- End Input -->
 
