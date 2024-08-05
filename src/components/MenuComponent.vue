@@ -60,14 +60,6 @@
         :keys="criteriaKeys"
         :rows="criteria"
       />
-
-      <!-- Debug Criteria -->
-      <div v-if="generalStore.$state.criteriaValue?.[2] != null">
-        <div v-for="(value, index) in generalStore.$state.criteriaValue" :key="index">
-          {{ criteriaKeys[index] }} - {{ value.toPrecision(2) }} ({{ value }})
-        </div>
-      </div>
-      <!-- End Debug Criteria -->
     </section>
     <!-- End Criteria -->
 

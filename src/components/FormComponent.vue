@@ -18,11 +18,15 @@
       <h2 class="font-bold text-xl text-center">Hasil</h2>
       <div>
         <table class="table-auto w-full">
-          <tr v-for="(result, index) in surveyResult" :key="index">
+          <tr
+            v-for="(result, index) in surveyResult"
+            :key="index"
+            class="first:font-bold first:border-b-2 border-neutral-300"
+          >
             <td class="py-2">Usaha dengan nilai tertinggi ke-{{ index + 1 }}</td>
-            <td class="capitalize font-semibold">{{ result.key }}</td>
+            <td class="capitalize">{{ result.key }}</td>
             <td>Dengan Bobot</td>
-            <td class="capitalize font-semibold">{{ result.value }}</td>
+            <td class="capitalize">{{ result.value }}</td>
           </tr>
         </table>
       </div>
