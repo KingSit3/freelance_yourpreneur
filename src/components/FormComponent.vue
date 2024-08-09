@@ -14,7 +14,7 @@
       />
     </div>
 
-    <div class="bg-green-800 rounded-lg p-5">
+    <div class="bg-blue-200 rounded-lg p-5">
       <h2 class="font-bold text-xl text-center">Hasil</h2>
       <div>
         <table class="table-auto w-full">
@@ -35,7 +35,7 @@
     <div class="flex justify-center gap-5">
       <button
         @click="generalStore.$state.mainMenu = 'menu'"
-        class="px-5 p-1.5 border-2 border-blue-800 hover:bg-blue-800 text-neutral-100 rounded duration-200"
+        class="px-5 p-1.5 border-2 border-blue-800 hover:bg-blue-800 hover:*:text-neutral-100 rounded duration-200"
       >
         Kembali ke Menu Utama
       </button>
