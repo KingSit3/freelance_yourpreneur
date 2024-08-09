@@ -115,7 +115,7 @@
       <button
         :disabled="storeInputError != null"
         @click="generalStore.$state.mainMenu = 'form'"
-        class="px-3 p-0.5 border-2 border-green-800 hover:bg-green-800 hover:text-neutral-100 rounded duration-200"
+        class="px-3 p-0.5 border-2 border-green-800 hover:bg-blue-800 hover:text-neutral-100 rounded duration-200"
       >
         Mulai isi form
       </button>
